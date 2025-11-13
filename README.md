@@ -1,3 +1,5 @@
+*Reports and Arithmetic Microservice*
+
 **Communication Contract**
 1. We will communicate via Teams and respond to any chat messages within 48 hours. This excludes Tuesday and Wednesdays. Aside from these two days, if no response within 24 hours, team members can make assumptions as needed but make sure to communicate their actions in a follow-up email.
 2. All group assignments should be completed at least one day prior to the official due date. This will allow the team one additional day to review the assignment/project details, and ensure that there is not a quick rush to complete work right before the deadline.
