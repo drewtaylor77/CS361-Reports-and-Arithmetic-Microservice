@@ -1,5 +1,6 @@
-def battle_logic(attack, defense):
+def battle_logic(attack, defense, crit=1):
     """
-    Calculates total damage based on given parameters
+    Calculates total damage based on attack, defense and crit multiplyer
     """
-    pass
+    raw_damage = (attack - defense) * crit
+    return max(0, raw_damage)

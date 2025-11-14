@@ -1,5 +1,4 @@
 import zmq
-import json
 
 
 # Set up environment and sockets
@@ -10,22 +9,22 @@ socket = context.socket(zmq.REQ)
 # Connect to server socket
 socket.connect("tcp://localhost:5556")
 
-# Setup request for arithmetic service
-request = {
-    "service_key": "arithmetic",
+# Setup request for battle_logic service
+request_dmg = {
+    "service_key": "battle_logic",
     "data": {
-        "num_1": 10,
-        "num_2": 5
+        "attack": 10,
+        "defense": 5,
+        "crit": 1.5
     }
 }
 
 # Send request
 print("Sending request...")
-socket.send_json(request)
+socket.send_json(request_dmg)
 
 # Get the reply
-message = socket.recv()
-response = json.loads(message.decode())
+response = socket.recv_json()
 
 # Print response
 print("Received response from server:")
