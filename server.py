@@ -10,6 +10,9 @@ context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5556")
 
+# Setup instance of CookingConverter
+converter = CookingConverter()
+
 try:
     while True:
         # Receive message
@@ -29,7 +32,7 @@ try:
         if not service_key:
             response = {"error": "Missing service_key"}
         elif service_key == "battle_logic":
-            # Parameters -> attack: float, defense: float, crit: float
+            # Unpack data
             attack = data.get("attack", 0)
             defense = data.get("defense", 0)
             crit = data.get("crit", 1)
@@ -38,11 +41,34 @@ try:
             response = {"damage": battle_logic(attack, defense, crit)}
 
         elif service_key == "convert_volume":
-            pass
+            # Unpack data
+            amount = data.get("amount")
+            unit = data.get("unit")
+            to_metric = data.get("to_metric")
+
+            # call convert_volume function
+            response = {
+                "conversion": converter.convert_volume(amount, unit, to_metric)
+            }
         elif service_key == "convert_weight":
-            pass
+            # Unpack data
+            amount = data.get("amount")
+            unit = data.get("unit")
+            to_metric = data.get("to_metric")
+
+            # call convert_volume function
+            response = {
+                "conversion": converter.convert_weight(amount, unit, to_metric)
+            }
         elif service_key == "convert_temp":
-            pass
+            # Unpack data
+            value = data.get("value")
+            direction = data.get("direction")
+
+            # Call convert_temperature
+            response = {
+                "conversion": converter.convert_temperature(value, direction)
+            }
         else:
             response = {"error": f"Unknown service_key: {service_key}"}
 
