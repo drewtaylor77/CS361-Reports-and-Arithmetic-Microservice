@@ -52,6 +52,7 @@ print(response)
 ```
 
 ## Using the `convert_volume`, `convert_weight`, and `convert_temperature` Services
+These services are capable of converting from various imperial measurement units to metric, and vice versa.
 Available unit conversions:
 - `convert_volume`:
     -  teaspoon
@@ -90,14 +91,55 @@ The parameters you include in data can vary depending on the unit conversion ser
     -  `direction` (string, default="F_to_C"):  "F_to_C" if converting from Farenheit to Celsius.  "C_to_F" if converting from Celsius to Farenheit.
 
   ### JSON Format examples
-`convert_volume`:  
+`convert_volume` 2 Tbs to mL:  
+```python
+message = {
+    "service_key": "convert_volume",
+    "data": {
+        "amount": 2,
+        "unit": "tablespoon"
+    }
+}
+```
+`convert_weight` 1 lb to grams:  
+```python
+message = {
+    "service_key": "convert_weight",
+    "data": {
+        "amount": 1,
+        "unit": "pound"
+    }
+}
+```
+`convert_temperature` Celsius to Farenheit:   
+```python
+message = {
+    "service_key": "convert_temperature",
+    "data": {
+        "value": 180,
+        "direction": "C_to_F"
+    }
+}
+```
+### Sending the Request (Local Server)
+```python
+import zmq
 
-  
-`convert_weight`:  
 
-  
-`convert_temperature`:   
+# Connect to server
+context = zmq.Context()
+socket = context.socket(zmq.REQ)
+socket.connect("tcp://localhost:5556")
 
+# Send the request
+socket.send_json(message)
+```
+### Receiving the Response
+```python
+response = socket.recv_json()
+print("Received response from server:")
+print(response)
+```
 
 
 ## UML Diagram
