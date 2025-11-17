@@ -94,32 +94,34 @@ The parameters you include in data can vary depending on the unit conversion ser
 `convert_volume` 2 Tbs to mL:  
 ```python
 message = {
-    "service_key": "convert_volume",
+    "service_key":"convert_volume",
     "data": {
         "amount": 2,
-        "unit": "tablespoon"
+        "unit": "tablespoon",
+        "to_metric": True
+        }
     }
-}
 ```
 `convert_weight` 1 lb to grams:  
 ```python
 message = {
-    "service_key": "convert_weight",
+    "service_key":"convert_weight",
     "data": {
         "amount": 1,
-        "unit": "pound"
+        "unit": "pound",
+        "to_metric": True
+        }
     }
-}
 ```
 `convert_temperature` Celsius to Farenheit:   
 ```python
 message = {
-    "service_key": "convert_temperature",
+    "service_key":"convert_temp",
     "data": {
         "value": 180,
         "direction": "C_to_F"
+        }
     }
-}
 ```
 ### Sending the Request (Local Server)
 ```python
@@ -134,6 +136,21 @@ socket.connect("tcp://localhost:5556")
 # Send the request
 socket.send_json(message)
 ```
+
+### Response Formats
+The response is formatted as follows:
+```python
+# convert_volume
+{'conversion': 30}
+
+# convert_weight
+{'conversion': 454}
+
+# convert_temp
+# C to F
+{'conversion': 356.0}
+```
+
 ### Receiving the Response
 ```python
 response = socket.recv_json()
