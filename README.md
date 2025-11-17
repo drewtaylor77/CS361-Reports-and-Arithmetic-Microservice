@@ -143,6 +143,7 @@ print(response)
 
 
 ## UML Diagram
+<img width="707" height="631" alt="image" src="https://github.com/user-attachments/assets/79e83e86-542a-4c1c-b05a-78c8182a493d" />
 
 
 ## Communication Contract
