@@ -13,7 +13,7 @@ socket.connect("tcp://localhost:5556")
 request_dmg = {
     "service_key": "battle_logic",
     "data": {
-        "attack": 10,
+        "attack": 10,   # Correct response should be 7.5
         "defense": 5,
         "crit": 1.5
     }

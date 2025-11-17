@@ -9,6 +9,7 @@ from battle_logic import battle_logic
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5556")
+print("Server running")
 
 # Setup instance of CookingConverter
 converter = CookingConverter()
@@ -17,6 +18,7 @@ try:
     while True:
         # Receive message
         message = socket.recv_string()
+        print(f"Received request: {message}")
         try:
             request = json.loads(message)
         except json.JSONDecodeError:
