@@ -34,35 +34,33 @@ print(response)
 request_volume = {
     "service_key": "convert_volume",
     "data": {
-        "amount": 2,
+        "amount": 2,    # Correct response should be: 30
         "unit": "tablespoon",
         "to_metric": True
         }
     }
 
+# Setup request for convert_weight
 request_weight = {
     "service_key": "convert_weight",
     "data": {
-        "amount": 1,
+        "amount": 1,    # Correct response should be: 454
         "unit": "pound",
         "to_metric": True
         }
     }
 
+# Setup request for convert_temperature
 request_temp_CtoF = {
     "service_key": "convert_temp",
     "data": {
-        "value": 180,
+        "value": 180,   # Correct response should be: 356.0
         "direction": "C_to_F"
         }
     }
 
 
 def run_test(request_dict):
-    context = zmq.Context()
-    print('Client attempting to connect to server...')
-    socket = context.socket(zmq.REQ)
-
     socket.connect("tcp://localhost:5556")
     print('sending request...')
     socket.send_json(request_dict)

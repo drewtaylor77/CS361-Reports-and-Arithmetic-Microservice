@@ -163,6 +163,10 @@ print(response)
 <img width="707" height="631" alt="image" src="https://github.com/user-attachments/assets/79e83e86-542a-4c1c-b05a-78c8182a493d" />
 
 
+## Contributions
+- Neo Holgado: battle_logic.py, test.py, server.py, README, video
+- Jonathan Jackson: kitchen_converter_v1.py, test.py, server.py, README, UML diagram
+
 ## Communication Contract
 1. We will communicate via Teams and respond to any chat messages within 48 hours. This excludes Tuesday and Wednesdays. Aside from these two days, if no response within 24 hours, team members can make assumptions as needed but make sure to communicate their actions in a follow-up email.
 2. All group assignments should be completed at least one day prior to the official due date. This will allow the team one additional day to review the assignment/project details, and ensure that there is not a quick rush to complete work right before the deadline.
