@@ -30,10 +30,9 @@ response = socket.recv_json()
 print("Received response from server:")
 print(response)
 
-#%%
 # Setup request for convert_volume
 request_volume = {
-    "service_key":"convert_volume",
+    "service_key": "convert_volume",
     "data": {
         "amount": 2,
         "unit": "tablespoon",
@@ -42,7 +41,7 @@ request_volume = {
     }
 
 request_weight = {
-    "service_key":"convert_weight",
+    "service_key": "convert_weight",
     "data": {
         "amount": 1,
         "unit": "pound",
@@ -51,7 +50,7 @@ request_weight = {
     }
 
 request_temp_CtoF = {
-    "service_key":"convert_temp",
+    "service_key": "convert_temp",
     "data": {
         "value": 180,
         "direction": "C_to_F"
@@ -63,16 +62,15 @@ def run_test(request_dict):
     context = zmq.Context()
     print('Client attempting to connect to server...')
     socket = context.socket(zmq.REQ)
-    
+
     socket.connect("tcp://localhost:5556")
     print('sending request...')
     socket.send_json(request_dict)
     response = socket.recv_json()
     print("Received response: ")
     print(response)
-    
-    
-    
+
+
 run_test(request_volume)
 run_test(request_weight)
 run_test(request_temp_CtoF)
