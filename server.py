@@ -28,7 +28,7 @@ try:
         # Unpack message
         service_key = request.get("service_key")
         data = request.get("data", {})
-        response = {}   # Setup response
+        response = {}
 
         # Route request
         if not service_key:
